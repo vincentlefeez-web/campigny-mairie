@@ -49,9 +49,9 @@ ANCIEN = "https://www.campigny27.fr/sites/default/files/images/"
 PHOTOS = {
     "bandeau-site.jpg": "https://www.campigny27.fr/sites/all/themes/resiaw/images/bandeau-site.jpg",
     "vue-aerienne.jpg": ANCIEN + "campigny-vue-aerienne.jpg",
-    "coucher-de-soleil.jpg": ANCIEN + "photo_jeanne_4_campigny.jpg",
-    "campagne.jpg": ANCIEN + "photo_jeanne_1_campigny.jpg",
-    "chemin-mare-aux-perdrix.jpg": ANCIEN + "chemin_de_la_mare_aux_perdrix_1.jpg",
+    "coucher-de-soleil.jpg": "https://www.campigny27.fr/sites/default/files/styles/page_-_images/public/images/photo_jeanne_4_campigny.jpg?itok=48c-U2Q-",
+    "campagne.jpg": "https://www.campigny27.fr/sites/default/files/styles/page_-_images/public/images/photo_jeanne_1_campigny.jpg?itok=k-f_zpyR",
+    "chemin-mare-aux-perdrix.jpg": "https://www.campigny27.fr/sites/default/files/styles/page_-_images/public/images/chemin_de_la_mare_aux_perdrix_1.jpg?itok=qVvsyb1r",
     "campagne-juin-2017.jpg": ANCIEN + "juin_2017_campagne_1.jpg",
     "campigny-juillet-2019.jpg": ANCIEN + "campigny_07_2019_2.jpg",
     "cheval.jpg": ANCIEN + "cheval_campigny.jpg",
