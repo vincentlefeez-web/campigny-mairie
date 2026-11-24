@@ -236,3 +236,28 @@ form.contact button { justify-self: start; border: 0; cursor: pointer; font: inh
   .bandeau-page, .heros { background: none; color: #000; }
   .bandeau-page h1, .heros h1 { color: #000; }
 }
+
+/* ---------- Photos de paysages ---------- */
+.heros {
+  background:
+    linear-gradient(100deg, rgba(18,51,42,.92) 0%, rgba(18,51,42,.75) 45%, rgba(18,51,42,.25) 100%),
+    url("../img/paysages/bandeau-site.jpg") center 40% / cover no-repeat,
+    linear-gradient(160deg, var(--vert-700) 0%, var(--vert-900) 75%);
+}
+.bandeau-page { position: relative; }
+.bandeau-page.photo {
+  background:
+    linear-gradient(100deg, rgba(18,51,42,.9) 0%, rgba(18,51,42,.6) 60%, rgba(18,51,42,.35) 100%),
+    var(--photo) center / cover no-repeat,
+    linear-gradient(160deg, var(--vert-700), var(--vert-900));
+  padding-block: 4rem 3.4rem;
+}
+.galerie { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; margin: 1.2rem 0; }
+.galerie figure { margin: 0; background: #fff; border-radius: var(--rayon); overflow: hidden; border: 1px solid var(--bord); }
+.galerie img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.galerie figure.large { grid-column: span 2; }
+.galerie figure.large img { aspect-ratio: 16 / 9; }
+@media (max-width: 620px) { .galerie figure.large { grid-column: auto; } }
+.galerie figcaption { padding: .6rem .9rem; font-size: .9rem; color: var(--texte-doux); }
+.photo-carte { border-radius: var(--rayon); overflow: hidden; }
+.photo-carte img { width: 100%; height: 100%; object-fit: cover; min-height: 260px; }
