@@ -35,12 +35,36 @@ NAV = [
 ]
 
 LOGO = """<svg viewBox="0 0 48 48" aria-hidden="true">
-  <path d="M24 3 6 9v14c0 11 8 19 18 22 10-3 18-11 18-22V9L24 3Z" fill="#1f5643"/>
-  <path d="M6 27c5-4 11-5 18-2s13 2 18-2v-.1C41 34 33 42 24 45 15 42 7 35 6 27Z" fill="#2f7a5f"/>
-  <circle cx="24" cy="19" r="7" fill="#b5352b"/>
-  <path d="M24 12c0-3 2-5 4-5" stroke="#c99a2e" stroke-width="2.2" fill="none" stroke-linecap="round"/>
-  <path d="M25 11c2-2 5-2 6 0-2 2-4 2-6 0Z" fill="#c99a2e"/>
+  <path d="M24 3 6 9v14c0 11 8 19 18 22 10-3 18-11 18-22V9L24 3Z" fill="#b4441f"/>
+  <path d="M6 27c5-4 11-5 18-2s13 2 18-2v-.1C41 34 33 42 24 45 15 42 7 35 6 27Z" fill="#6f9a36"/>
+  <circle cx="24" cy="19" r="7" fill="#f2b53a"/>
+  <path d="M24 12c0-3 2-5 4-5" stroke="#4f7f22" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+  <path d="M25 11c2-2 5-2 6 0-2 2-4 2-6 0Z" fill="#6f9a36"/>
 </svg>"""
+
+
+# Photos de paysages : si le fichier n'est pas encore dans assets/img/paysages/,
+# on utilise temporairement la photo hébergée sur l'ancien site.
+ANCIEN = "https://www.campigny27.fr/sites/default/files/images/"
+PHOTOS = {
+    "bandeau-site.jpg": "https://www.campigny27.fr/sites/all/themes/resiaw/images/bandeau-site.jpg",
+    "vue-aerienne.jpg": ANCIEN + "campigny-vue-aerienne.jpg",
+    "coucher-de-soleil.jpg": ANCIEN + "photo_jeanne_4_campigny.jpg",
+    "campagne.jpg": ANCIEN + "photo_jeanne_1_campigny.jpg",
+    "chemin-mare-aux-perdrix.jpg": ANCIEN + "chemin_de_la_mare_aux_perdrix_1.jpg",
+    "campagne-juin-2017.jpg": ANCIEN + "juin_2017_campagne_1.jpg",
+    "campigny-juillet-2019.jpg": ANCIEN + "campigny_07_2019_2.jpg",
+    "cheval.jpg": ANCIEN + "cheval_campigny.jpg",
+    "vaches.jpg": ANCIEN + "vaches_4_06_2019.jpg",
+    "moutons.jpg": ANCIEN + "moutons.jpg",
+}
+
+
+def photos(html: str) -> str:
+    for nom, distant in PHOTOS.items():
+        if not (RACINE / "assets" / "img" / "paysages" / nom).exists():
+            html = html.replace("assets/img/paysages/" + nom, distant)
+    return html
 
 
 def lire_page(fichier: Path):
@@ -80,7 +104,7 @@ def gabarit(nom, meta, corps):
   <meta property="og:description" content="{desc}">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="fr_FR">
-  <meta name="theme-color" content="#12332a">
+  <meta name="theme-color" content="#b4441f">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
@@ -179,7 +203,7 @@ def main():
     for fichier in sorted(PAGES.glob("*.html")):
         nom = fichier.stem
         meta, corps = lire_page(fichier)
-        (RACINE / f"{nom}.html").write_text(gabarit(nom, meta, corps), encoding="utf-8")
+        (RACINE / f"{nom}.html").write_text(photos(gabarit(nom, meta, corps)), encoding="utf-8")
         plan.append((nom, meta.get("titre", nom)))
         print(f"  ✓ {nom}.html")
 
